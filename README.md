@@ -14,7 +14,7 @@ Follow one of the tutorials to create a project and get your host, access_key an
  
 ## Functions
 Introduction all API.
-### recognizer.cs
+### acrcloud_recognizer.h
 ```c
  /**
  *
