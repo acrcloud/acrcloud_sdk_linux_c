@@ -1,0 +1,72 @@
+#ifndef __ACRCLOUD_RECOGNIZER_H
+#define __ACRCLOUD_RECOGNIZER_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+enum ACRCLOUD_OPT_REC_TYPE_S {
+    acr_opt_rec_audio,
+    acr_opt_rec_humming,
+    acr_opt_rec_both,
+};
+typedef enum ACRCLOUD_OPT_REC_TYPE_S ACRCLOUD_OPT_REC_TYPE;
+
+struct acrcloud_config_s {
+    char* host_;
+    char* access_key_;
+    char* access_secret_;
+    int timeout_ms_;
+    ACRCLOUD_OPT_REC_TYPE rec_type_;
+};
+typedef struct acrcloud_config_s acrcloud_config;
+
+/**
+ *
+ *  recognize by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz) 
+ *
+ *  @param config: query config 
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz]
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param result: json result metainfo, you must free this buffer by acr_free.  https://docs.acrcloud.com/metadata
+ *  @param result_len: the length of result 
+ *  
+ *
+**/
+void acr_recognize_by_8k_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, char** result, int* result_len);
+
+/**
+ *
+ *  create audio fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz) 
+ *
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz]
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param fp_buffer: fingerprint of pcm_buffer, you must free this buffer by acr_free.
+ *  @param fp_buffer_len: the length of fp_buffer
+ *
+**/
+void acr_create_audio_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
+
+/**
+ *
+ *  create humming fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz) 
+ *
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz]
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param fp_buffer: fingerprint of pcm_buffer, you must free this buffer by acr_free. 
+ *  @param fp_buffer_len: the length of fp_buffer
+ *
+**/
+void acr_create_humming_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
+
+/**
+ * free buffer that other function return.
+**/
+void acr_free(void* buffer);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __ACRCLOUD_RECOGNIZER_H */
+
