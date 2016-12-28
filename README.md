@@ -16,6 +16,54 @@ Follow one of the tutorials to create a project and get your host, access_key an
 Introduction all API.
 ### acrcloud_recognizer.h
 ```c
+/**
+ *
+ *  recognize by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit) 
+ *
+ *  @param config: query config 
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit]
+ *  @param nchannels:  channels
+ *  @param sample_rate: sample rate of pcm_buffer
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param result: json result metainfo, you must free this buffer by acr_free.  https://docs.acrcloud.com/metadata
+ *  @param result_len: the length of result 
+ *  
+ *
+**/
+void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** result, int* result_len);
+
+
+/**
+ *
+ *  create audio fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz) 
+ *
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit]
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param nchannels:  channels
+ *  @param sample_rate: sample rate of pcm_buffer
+ *  @param fp_buffer: fingerprint of pcm_buffer, you must free this buffer by acr_free.
+ *  @param fp_buffer_len: the length of fp_buffer
+ *
+**/
+void acr_create_audio_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
+
+
+
+/**
+ *
+ *  create humming fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit) 
+ *
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit]
+ *  @param pcm_buffer_len: the length of pcm_buffer 
+ *  @param nchannels:  channels
+ *  @param sample_rate: sample rate of pcm_buffer
+ *  @param fp_buffer: fingerprint of pcm_buffer, you must free this buffer by acr_free. 
+ *  @param fp_buffer_len: the length of fp_buffer
+ *
+**/
+void acr_create_humming_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
+
+
  /**
  *
  *  recognize by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz) 
