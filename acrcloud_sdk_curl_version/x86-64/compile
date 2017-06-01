@@ -1,1 +1,1 @@
-gcc -o test test.c -L. -lacrcloud_recognizer
+gcc -o test test.c -L. -lacrcloud_recognizer -lcurl
