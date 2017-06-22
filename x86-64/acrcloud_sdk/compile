@@ -1,0 +1,4 @@
+gcc -o test test.c -lacrcloud_recognizer -L.
+
+# static
+#g++ -L. -o test test.c -lacrcloud_recognizer -lpthread 
