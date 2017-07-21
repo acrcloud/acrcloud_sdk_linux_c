@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "acrcloud_recognizer.h"
 
 int main(int argc, char **argv) 
@@ -29,9 +30,11 @@ int main(int argc, char **argv)
     fclose(fp_wav);
 
     acrcloud_config config;
+    memset(&config, 0, sizeof(acrcloud_config));
     config.host_ = "XXXXXX";
-	config.access_key_ = "XXXXXX";
-	config.access_secret_ = "XXXXXX";
+    //config.curl_proxy_address_ = NULL;
+    config.access_key_ = "XXXXXX";
+    config.access_secret_ = "XXXXXX";
 
     config.timeout_ms_ = 5000;
     config.rec_type_ = acr_opt_rec_humming; // acr_opt_rec_audio  acr_opt_rec_both
