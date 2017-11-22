@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     config.access_key_ = "<your access_key>";
     config.access_secret_ = "<your access_secret>";
     config.timeout_ms_ = 5000;
-    config.rec_type_ = acr_opt_rec_humming; // you can change it [acr_opt_rec_audio, acr_opt_rec_humming, acr_opt_rec_both].
+    config.rec_type_ = acr_opt_rec_audio; // you can change it [acr_opt_rec_audio, acr_opt_rec_humming, acr_opt_rec_both].
 
     char *result = NULL;
     int result_len = 0;
