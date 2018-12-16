@@ -17,7 +17,6 @@ struct acrcloud_config_s {
     char* access_key_;
     char* access_secret_;
     int timeout_ms_;
-    char* curl_proxy_address_;
     ACRCLOUD_OPT_REC_TYPE rec_type_;
 };
 typedef struct acrcloud_config_s acrcloud_config;
