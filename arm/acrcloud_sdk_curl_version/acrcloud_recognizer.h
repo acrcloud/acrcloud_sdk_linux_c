@@ -5,6 +5,30 @@
 extern "C" {
 #endif
 
+#ifdef WIN32 //windows platform
+ 
+#ifdef ACR_USER_MODULE_EXPORTS
+#define ACR_API __declspec(dllexport)
+#else
+#define ACR_API __declspec(dllimport)
+#endif
+ 
+#ifndef ACR_CALL_TYPE
+#define ACR_CALL_TYPE  	__stdcall  
+#endif
+ 
+#else //linux platform
+ 
+#ifndef ACR_API
+#define ACR_API __attribute__ ((visibility ("default")))
+#endif
+ 
+#ifndef ACR_CALL_TYPE
+#define ACR_CALL_TYPE
+#endif
+ 
+#endif
+
 enum ACRCLOUD_OPT_REC_TYPE_S {
     acr_opt_rec_audio,
     acr_opt_rec_humming,
@@ -26,12 +50,12 @@ typedef struct acrcloud_config_s acrcloud_config;
  *
  *   @return 0 something error, 1 suss
  */
-int acr_recognize_global_init();
+ACR_API int acr_recognize_global_init();
 
 /**
  *   If you call acr_recognize_global_cleanup to use acr_recognize_by_pcm, you must call this function when your APP exits.
  */
-void acr_recognize_global_cleanup();
+ACR_API void acr_recognize_global_cleanup();
 
 /**
  *
@@ -47,7 +71,7 @@ void acr_recognize_global_cleanup();
  *  
  *
 **/
-void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** result, int* result_len);
+ACR_API void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** result, int* result_len);
 
 
 /**
@@ -62,7 +86,7 @@ void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buff
  *  @param fp_buffer_len: the length of fp_buffer
  *
 **/
-void acr_create_audio_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
+ACR_API void acr_create_audio_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
 
 
 
@@ -78,7 +102,7 @@ void acr_create_audio_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, i
  *  @param fp_buffer_len: the length of fp_buffer
  *
 **/
-void acr_create_humming_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
+ACR_API void acr_create_humming_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** fp_buffer, int* fp_buffer_len);
 
 
 
@@ -94,7 +118,7 @@ void acr_create_humming_fingerprint_by_pcm(char* pcm_buffer, int pcm_buffer_len,
  *  
  *
 **/
-void acr_recognize_by_8k_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, char** result, int* result_len);
+ACR_API void acr_recognize_by_8k_pcm(acrcloud_config config, char* pcm_buffer, int pcm_buffer_len, char** result, int* result_len);
 
 
 
@@ -108,7 +132,7 @@ void acr_recognize_by_8k_pcm(acrcloud_config config, char* pcm_buffer, int pcm_b
  *  @param fp_buffer_len: the length of fp_buffer
  *
 **/
-void acr_create_audio_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
+ACR_API void acr_create_audio_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
 
 /**
  *
@@ -120,7 +144,7 @@ void acr_create_audio_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len
  *  @param fp_buffer_len: the length of fp_buffer
  *
 **/
-void acr_create_humming_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
+ACR_API void acr_create_humming_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_len, char** fp_buffer, int* fp_buffer_len);
 
 /**
  *
@@ -132,18 +156,18 @@ void acr_create_humming_fingerprint_by_8k_pcm(char* pcm_buffer, int pcm_buffer_l
  *  @param fp_buffer_len: the length of fp_buffer
  *
 **/
-void acr_resample_to_8k_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** out_8k_pcm_buffer, int* out_8k_pcm_buffer_len);
+ACR_API void acr_resample_to_8k_pcm(char* pcm_buffer, int pcm_buffer_len, int nchannels, int sample_rate, char** out_8k_pcm_buffer, int* out_8k_pcm_buffer_len);
 
 
 /**
  * free buffer that other function return.
 **/
-void acr_free(void* buffer);
+ACR_API void acr_free(void* buffer);
 
 /**
  * set debug model.
 **/
-void acr_set_debug(char is_debug);
+ACR_API void acr_set_debug(char is_debug);
 
 #ifdef __cplusplus
 }
