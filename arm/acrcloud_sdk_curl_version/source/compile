@@ -1,0 +1,12 @@
+gcc -o test_rec \
+    test_rec.c \
+    acrcloud_recognizer.c \
+    log/log.c \
+    crypto/acrcloud_signature.c \
+    crypto/base64.c \
+    crypto/hmac-sha1.c \
+    crypto/memxor.c \
+    crypto/sha1.c \
+    http/acrcloud_http.c \
+    utils/utils.c \
+-Lfingerprint_libs -lacrcloud_extr -I. -Ifingerprint_libs -Iexception -lm -lcurl
