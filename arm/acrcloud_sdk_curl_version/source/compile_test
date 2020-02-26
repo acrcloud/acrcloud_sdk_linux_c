@@ -1,4 +1,5 @@
-gcc -fvisibility=hidden -Wl,-Bsymbolic -fPIC -O2 -shared -o libacrcloud_recognizer.so \
+gcc -s -o test_rec \
+    test_rec.c \
     acrcloud_recognizer.c \
     log/log.c \
     crypto/acrcloud_signature.c \
