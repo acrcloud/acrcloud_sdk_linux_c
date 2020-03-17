@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     acr_create_audio_fingerprint_from_pcm(pcm_buffer, nres, 1, 8000, &audio_fp, &audio_fp_len, 0);
     if (audio_fp != NULL) {
         printf("fp len: %d\n", audio_fp_len);
-        acr_free(audio_fp);
+        acr_extr_free(audio_fp);
     }
 
     // Create humming fingerprint
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     acr_create_humming_fingerprint_from_pcm(pcm_buffer, nres, 1, 8000, &humming_fp, &humming_fp_len, 0);
     if (humming_fp != NULL) {
         printf("fp len: %d\n", humming_fp_len);
-        acr_free(humming_fp);
+        acr_extr_free(humming_fp);
     }
 
 }

@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 
     config.timeout_ms_ = 5000;
     //config.rec_type_ = acr_opt_rec_humming;
-    config.rec_type_ = acr_opt_rec_both;
-    //config.rec_type_ = acr_opt_rec_audio;
+    //config.rec_type_ = acr_opt_rec_both;
+    config.rec_type_ = acr_opt_rec_audio;
 
     char *result = NULL;
     int result_len = 0;

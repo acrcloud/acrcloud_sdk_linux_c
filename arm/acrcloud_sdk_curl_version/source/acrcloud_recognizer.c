@@ -165,7 +165,7 @@ ACR_API void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer,
 	post(config.host_, 80, "/v1/identify", nodes, nodes_num, result, result_len,
 			config.timeout_ms_);
 
-	acr_free(ext_fp);
-	acr_free(hum_fp);
+	acr_extr_free(ext_fp);
+	acr_extr_free(hum_fp);
 }
 

@@ -66,7 +66,7 @@ ACR_API void acr_create_humming_fingerprint_from_pcm(char* pcm_buffer, int pcm_b
 /**
  * free buffer that other function return.
 **/
-ACR_API void acr_free(void* buffer);
+ACR_API void acr_extr_free(void* buffer);
 
 #ifdef __cplusplus
 }
