@@ -84,8 +84,8 @@ void acr_recognize_by_file(acrcloud_config config,
             *result_len = strlen(AUDIO_DECODE_ERROR); 
             return;
         }
-        *result = strdup(NO_RESULT);
-        *result_len = strlen(NO_RESULT);
+        *result = strdup(CREATE_FINGERPRINT_ERROR);
+        *result_len = strlen(CREATE_FINGERPRINT_ERROR);
         return;
     }
 
@@ -126,8 +126,8 @@ void acr_recognize_by_filebuffer(acrcloud_config config, char* file_buffer, int 
             *result_len = strlen(AUDIO_DECODE_ERROR); 
             return;
         }
-        *result = strdup(NO_RESULT);
-        *result_len = strlen(NO_RESULT);
+        *result = strdup(CREATE_FINGERPRINT_ERROR);
+        *result_len = strlen(CREATE_FINGERPRINT_ERROR);
         return;
     }
 
