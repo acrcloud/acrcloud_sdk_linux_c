@@ -1,0 +1,11 @@
+gcc -fPIC -O2 -o test \
+    test.c \
+    recognizer.c \
+    log.c \
+    http.c \
+    signature.c \
+    crypto/base64.c \
+    crypto/hmac-sha1.c \
+    crypto/memxor.c \
+    crypto/sha1.c \
+    -L. -lacrcloud_extr_tool -lcurl
