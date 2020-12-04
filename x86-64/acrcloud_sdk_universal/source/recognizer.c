@@ -90,6 +90,9 @@ void acr_recognize_by_file(acrcloud_config config,
     }
 
     _do_recognize(config, ext_fp, ext_fp_len, hum_fp, hum_fp_len, result, result_len);
+
+    acr_free(ext_fp);
+    acr_free(hum_fp);
 }
 
 void acr_recognize_by_filebuffer(acrcloud_config config, char* file_buffer, int file_buffer_len, int start_time_seconds, char** result, int* result_len) {
@@ -132,6 +135,9 @@ void acr_recognize_by_filebuffer(acrcloud_config config, char* file_buffer, int 
     }
 
     _do_recognize(config, ext_fp, ext_fp_len, hum_fp, hum_fp_len, result, result_len);
+
+    acr_free(ext_fp);
+    acr_free(hum_fp);
 }
 
 void _do_recognize(acrcloud_config config,
