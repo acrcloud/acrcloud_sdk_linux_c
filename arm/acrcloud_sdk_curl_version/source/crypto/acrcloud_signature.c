@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include "base64.h"
+#include "hmac.h"
 #include "acrcloud_signature.h"
 #include "../log/log.h"
 

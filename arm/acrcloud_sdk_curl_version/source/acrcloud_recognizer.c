@@ -7,6 +7,7 @@
 #include "acrcloud_recognizer.h"
 #include "acrcloud_extr.h"
 #include "http/acrcloud_http.h"
+#include "crypto/acrcloud_signature.h"
 #include "exception/acrcloud_errorcode.h"
 #include "utils/utils.h"
 #include "log/log.h"
