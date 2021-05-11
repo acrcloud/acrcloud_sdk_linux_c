@@ -9,7 +9,6 @@
 #include "http/acrcloud_http.h"
 #include "crypto/acrcloud_signature.h"
 #include "exception/acrcloud_errorcode.h"
-#include "utils/utils.h"
 #include "log/log.h"
 
 ACR_API void acr_set_debug(char is_debug)
@@ -109,11 +108,18 @@ ACR_API void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer,
 	char signature_res[1024];
 	memset(signature_res, 0, 1024);
 
-	char local_mac[128] = { 0 };
-	memset(local_mac, 0, 128);
-	if (get_mac(local_mac) <= 0) {
-		sprintf(local_mac, "%s", "NOMAC");
-	}
+	//char local_mac[128] = { 0 };
+	//memset(local_mac, 0, 128);
+	//if (get_mac(local_mac) <= 0) {
+	//	sprintf(local_mac, "%s", "NOMAC");
+	//}
+
+        char device_id[128] = {0};
+        if (config.device_id_) {
+            snprintf(device_id, 127, "%s", config.device_id_);
+        } else {
+	    sprintf(device_id, "%s", "NOMAC");
+        }
 
 	acr_create_signature(signature_src, config.access_secret_, signature_res);
 	nodes[0].key_ = "access_key";
@@ -132,7 +138,7 @@ ACR_API void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer,
 	nodes[4].value_ = "1";
 
 	nodes[5].key_ = "uuid";
-	nodes[5].value_ = local_mac;
+	nodes[5].value_ = device_id;
 
 	int ii = 0;
 	for (ii = 0; ii < 6; ii++) {
@@ -166,7 +172,7 @@ ACR_API void acr_recognize_by_pcm(acrcloud_config config, char* pcm_buffer,
 	post(config.host_, 80, "/v1/identify", nodes, nodes_num, result, result_len,
 			config.timeout_ms_);
 
-	acr_extr_free(ext_fp);
-	acr_extr_free(hum_fp);
+	free(ext_fp);
+	free(hum_fp);
 }
 

@@ -7,5 +7,4 @@ gcc -fvisibility=hidden -Wl,-Bsymbolic -fPIC -O2 -shared -o libacrcloud_recogniz
     crypto/memxor.c \
     crypto/sha1.c \
     http/acrcloud_http.c \
-    utils/utils.c \
 -Lfingerprint_libs -lacrcloud_extr -I. -Ifingerprint_libs -Iexception -lm -lcurl
