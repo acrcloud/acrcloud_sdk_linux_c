@@ -39,10 +39,14 @@ int main(int argc, char **argv)
     config.timeout_ms_ = 5000;
     config.rec_type_ = acr_opt_rec_humming; // acr_opt_rec_audio  acr_opt_rec_both
 
+    acrcloud_params_t params[5];
+    params[0].key_ = "title";
+    params[0].value_ = "value";
+
     char *result = NULL;
     int result_len = 0;
     // config, pcm_buffer, pcm_buffer_len, nchannels, sample_rate, result, result_len 
-    acr_recognize_by_pcm(config, pcm_buffer, nres, atoi(argv[2]), atoi(argv[3]), &result, &result_len);
+    acr_recognize_by_pcm(config, pcm_buffer, nres, atoi(argv[2]), atoi(argv[3]), &result, &result_len, params, 1);
     if (result != NULL) {
         printf("** result: %s\n", result);
         acr_free(result);
