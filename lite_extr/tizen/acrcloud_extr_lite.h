@@ -26,9 +26,9 @@ EXPORT_API void acr_create_audio_fingerprint_by_pcm(char* pcm_buffer,
 
 /**
  *
- *  create humming fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz)
+ *  create humming fingerprint by wav audio buffer(RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit)
  *
- *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz]
+ *  @param pcm_buffer: query audio buffer[ (little-endian) data, WAVE audio, Microsoft PCM, 16 bit]
  *  @param pcm_buffer_len: the length of pcm_buffer
  *  @param nchannels:  channels of pcm_buffer
  *  @param sample_rate: sample rate of pcm_buffer
