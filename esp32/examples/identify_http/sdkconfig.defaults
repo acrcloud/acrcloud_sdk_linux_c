@@ -1,0 +1,13 @@
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+# TLS handshake runs in app_main
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=10240
+# WiFi + TLS + cert bundle + the test wav do not fit in the default 1 MB app partition
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
+
+# access_key / access_secret: set them in menuconfig -> ACRCloud identify,
+# or in a local sdkconfig.defaults.local that is not committed (see README)
+
+# real board: set SSID / password in menuconfig -> Example Connection Configuration
+CONFIG_EXAMPLE_CONNECT_WIFI=y
+CONFIG_EXAMPLE_CONNECT_ETHERNET=n
+CONFIG_EXAMPLE_CONNECT_IPV6=n

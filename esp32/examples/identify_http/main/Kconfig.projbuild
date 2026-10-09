@@ -1,0 +1,19 @@
+menu "ACRCloud identify"
+
+    config ACR_URL
+        string "Identify URL"
+        default "https://<HOST>/v1/identify"
+
+    config ACR_ACCESS_KEY
+        string "access_key"
+        default ""
+
+    config ACR_ACCESS_SECRET
+        string "access_secret"
+        default ""
+
+    config ACR_SNTP_SERVER
+        string "SNTP server (signature needs the current time)"
+        default "ntp.aliyun.com"
+
+endmenu

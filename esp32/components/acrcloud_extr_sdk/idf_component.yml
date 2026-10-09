@@ -1,0 +1,7 @@
+dependencies:
+  idf: ">=5.0"
+  # used only on ESP32 / ESP32-S3 / ESP32-P4; not downloaded for the other chips
+  espressif/esp-dsp:
+    version: "^1.8.0"
+    rules:
+      - if: "target in [esp32, esp32s3, esp32p4]"

@@ -1,0 +1,2 @@
+# run at the maximum clock (the default on the other chips)
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
